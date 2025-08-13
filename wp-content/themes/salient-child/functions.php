@@ -37,4 +37,30 @@ if (!function_exists('salient_woo_shop_title')) {
     }
 }
 
+// Filter area.
+if( !function_exists('nectar_product_filter_area_trigger') ) {
+	function nectar_product_filter_area_trigger() {
+		echo '<div class="nectar-shop-filters">
+					<a href="#" class="nectar-shop-filter-trigger">
+						<span class="toggle-icon">
+							<span>
+								<span class="top-line"></span>
+								<span class="bottom-line"></span>
+							</span>
+						</span>
+						<span class="text-wrap">
+							<span class="dynamic">
+								<span class="show">'.esc_html__('Mostrar','salient').'</span>
+								<span class="hide">'.esc_html__('Ocultar','salient').'</span>
+							</span> '.esc_html__('Filtros','salient').'</span>
+					</a>';
+					do_action('nectar_woocommerce_after_filter_trigger');
+		echo '</div>';
+	}
+}
+
+add_filter( 'woocommerce_product_related_products_heading', function( $translated_text ) {
+    return 'También podría interesarte...';
+});
+
 ?>
