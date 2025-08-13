@@ -33,6 +33,9 @@ wp-config.php
 # Uploads
 /wp-content/uploads/
 
+# Woocommerce plugin
+/wp-content/plugins/woocommerce/
+
 # Log files
 *.log
 
