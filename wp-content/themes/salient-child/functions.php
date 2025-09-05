@@ -63,4 +63,15 @@ add_filter( 'woocommerce_product_related_products_heading', function( $translate
     return 'También podría interesarte...';
 });
 
+add_filter('gettext', 'salient_traduce_paginacion', 20, 3);
+function salient_traduce_paginacion($translated_text, $text, $domain) {
+    if ($text === 'Next') {
+        $translated_text = 'Siguiente';
+    }
+    if ($text === 'Previous') {
+        $translated_text = 'Anterior';
+    }
+    return $translated_text;
+}
+
 ?>
