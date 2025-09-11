@@ -74,4 +74,15 @@ function salient_traduce_paginacion($translated_text, $text, $domain) {
     return $translated_text;
 }
 
+
+// Cambiar h2 por h3 en el loop de productos (solo en home)
+add_action( 'template_redirect', function() {
+    if ( is_front_page() || is_product() ) {
+        remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+        add_action( 'woocommerce_shop_loop_item_title', function() {
+            echo '<h3 class="woocommerce-loop-product__title">' . get_the_title() . '</h3>';
+        }, 10 );
+    }
+});
+
 ?>
