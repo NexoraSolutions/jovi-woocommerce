@@ -85,4 +85,19 @@ add_action( 'template_redirect', function() {
     }
 });
 
+add_filter( 'woocommerce_package_rates', 'ocultar_otras_si_gratis', 100, 2 );
+function ocultar_otras_si_gratis( $rates, $package ) {
+    $envio_gratis = array();
+
+    foreach ( $rates as $rate_id => $rate ) {
+        if ( 'free_shipping' === $rate->method_id ) {
+            $envio_gratis[ $rate_id ] = $rate;
+            break; // en cuanto encuentra envío gratis, corta
+        }
+    }
+
+    return !empty($envio_gratis) ? $envio_gratis : $rates;
+}
+
+
 ?>
